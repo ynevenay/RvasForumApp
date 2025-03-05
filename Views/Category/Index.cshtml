@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ForumApp.Models.Category>
+@{
+    ViewData["Title"] = "Lista kategorija";
+}
+<h2 class="text-center mb-4 mb-3">Kategorije:</h2>
+<div class="d-flex justify-content-end">
+
+    <a asp-action="Create" class="btn btn-success">Dodaj novu kategoriju</a>
+</div>
+<table class=" table table-striped">
+
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Opcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@c.CategoryId" class="btn btn-warning">Izmeni</a>
+                    <button class="btn btn-primary">Detalji</button>
+                    <button class="btn btn-danger">Ukloni</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
