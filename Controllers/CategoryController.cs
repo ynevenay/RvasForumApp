@@ -79,5 +79,32 @@ namespace ForumApp.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var c = await _context.Categories.FindAsync(id);
+
+            _context.Categories.Remove(c);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var c = await _context.Categories.FindAsync(id);
+
+            if (c == null) return NotFound();
+
+            var k = new Category()
+            {
+                CategoryId = c.CategoryId,
+                Name = c.Name
+            };
+
+            return View(k);
+        }
     }
 }

@@ -20,10 +20,13 @@
         {
             <tr>
                 <td>@c.Name</td>
-                <td>
+                <td class="d-flex">
                     <a asp-action="Edit" asp-route-id="@c.CategoryId" class="btn btn-warning">Izmeni</a>
-                    <button class="btn btn-primary">Detalji</button>
-                    <button class="btn btn-danger">Ukloni</button>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" value="@c.CategoryId" name="id" />
+                        <button type="submit" class="btn btn-danger">Ukloni</button>
+                    </form>
+                    <a asp-action="Details" asp-route-id="@c.CategoryId" class="btn btn-info">Detalji</a>
                 </td>
             </tr>
         }
