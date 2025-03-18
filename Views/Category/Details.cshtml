@@ -1,0 +1,13 @@
+﻿@model ForumApp.Models.Category
+@{
+    ViewData["Title"] = "Detaljno o kategoriji";
+}
+
+
+<h2>Kategorija @Model.CategoryId</h2>
+
+<p>Naziv: @Model.Name</p>
+@* ukoliko se radi o potkategoriji prikazuje se koja je njena roditeljska kategorija *@
+@if(Model.ParentCategoryId != null){
+    <p>Roditeljska kategorija: @Model.ParentCategory?.Name</p>
+}

@@ -1,0 +1,27 @@
+﻿@model ForumApp.Models.Category
+@* Dodat view partiial kako bi vizuelno docarali da se radi o potkategoriji *@
+<tr>
+    <td>
+        @if (Model.ParentCategoryId != null)
+        {
+            <span class="ms-3">└─</span> <!-- Vizuelna indikacija za potkategorije -->
+        }
+        @Model.Name
+    </td>
+    <td class="d-flex">
+        <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning btn-sm me-2">Izmeni</a>
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.CategoryId" />
+            <button type="submit" class="btn btn-danger btn-sm me-2">Ukloni</button>
+        </form>
+        <a asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-info btn-sm">Detalji</a>
+    </td>
+</tr>
+
+@if (Model.Subcategories?.Any() == true)
+{
+    @foreach (var subcategory in Model.Subcategories)
+    {
+        <partial name="_CategoryRow" model="subcategory" />
+    }
+}
