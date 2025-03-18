@@ -60,7 +60,6 @@ namespace ForumApp.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
             public string? DisplayName { get; set; }
-
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -74,7 +73,6 @@ namespace ForumApp.Areas.Identity.Pages.Account.Manage
             {
                 PhoneNumber = phoneNumber,
                 DisplayName = user.DisplayName
-
             };
         }
 
@@ -123,15 +121,16 @@ namespace ForumApp.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Neuspesno dodavanje korisnickog imena";
                     return RedirectToPage();
                 }
-                else if (Input.DisplayName != user.DisplayName)
+                else if(Input.DisplayName != user.DisplayName)
                 {
                     StatusMessage = "Korisnicko ime ne moze da se menja, posaljite upit adminu";
                     return RedirectToPage();
                 }
             }
 
+
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Profil je uspesno azuriran";
             return RedirectToPage();
         }
     }

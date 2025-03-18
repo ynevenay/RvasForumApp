@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForumApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250315172753_UpdateIdentityTabela")]
-    partial class UpdateIdentityTabela
+    [Migration("20250317185152_DodatePotkategorije")]
+    partial class DodatePotkategorije
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,7 +108,12 @@ namespace ForumApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ParentCategoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("CategoryId");
+
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -416,6 +421,16 @@ namespace ForumApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ForumApp.Models.Category", b =>
+                {
+                    b.HasOne("ForumApp.Models.Category", "ParentCategory")
+                        .WithMany("Subcategories")
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ParentCategory");
+                });
+
             modelBuilder.Entity("ForumApp.Models.Comment", b =>
                 {
                     b.HasOne("ForumApp.Models.Theme", "Theme")
@@ -572,6 +587,8 @@ namespace ForumApp.Data.Migrations
 
             modelBuilder.Entity("ForumApp.Models.Category", b =>
                 {
+                    b.Navigation("Subcategories");
+
                     b.Navigation("Themes");
                 });
 

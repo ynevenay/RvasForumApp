@@ -56,6 +56,12 @@ namespace ForumApp.Data
                 .WithMany(t => t.Comments)
                 .HasForeignKey(c => c.ThemeId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Category>()
+                .HasOne(c => c.ParentCategory)
+                .WithMany(c => c.Subcategories)
+                .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 

@@ -2,13 +2,14 @@
 @{
     ViewData["Title"] = "Lista kategorija";
 }
-<h2 class="text-center mb-4 mb-3">Kategorije:</h2>
-<div class="d-flex justify-content-end">
 
+<h2 class="text-center mb-4">Kategorije</h2>
+
+<div class="d-flex justify-content-end mb-3">
     <a asp-action="Create" class="btn btn-success">Dodaj novu kategoriju</a>
 </div>
-<table class=" table table-striped">
 
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Naziv</th>
@@ -16,20 +17,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var c in Model)
+        @foreach (var c in Model.Where(c => c.ParentCategoryId == null)) // Samo glavne kategorije
         {
-            <tr>
-                <td>@c.Name</td>
-                <td class="d-flex">
-                    <a asp-action="Edit" asp-route-id="@c.CategoryId" class="btn btn-warning">Izmeni</a>
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden" value="@c.CategoryId" name="id" />
-                        <button type="submit" class="btn btn-danger">Ukloni</button>
-                    </form>
-                    <a asp-action="Details" asp-route-id="@c.CategoryId" class="btn btn-info">Detalji</a>
-                </td>
-            </tr>
+            <partial name="_CategoryRow" model="c" />
         }
     </tbody>
 </table>
-

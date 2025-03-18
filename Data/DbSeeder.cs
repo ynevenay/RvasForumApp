@@ -19,17 +19,17 @@ namespace ForumApp.Data
             {
                 UserName = "admin@forum.rs",
                 Email = "admin@forum.rs",
-                EmailConfirmed = true,
-                PhoneNumberConfirmed = true
+                EmailConfirmed=true,
+                PhoneNumberConfirmed=true
             };
 
             var userInDb = await userManager.FindByEmailAsync(user.Email);
-            if (userInDb == null)
+            if(userInDb == null)
             {
-                await userManager.CreateAsync(user, "Admin123$");
+                await userManager.CreateAsync(user,"Admin123$");
                 await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
             }
-
+        
         }
     }
 }

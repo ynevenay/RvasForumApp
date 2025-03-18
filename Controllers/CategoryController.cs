@@ -2,11 +2,12 @@
 using ForumApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForumApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles ="Admin")]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,6 +19,7 @@ namespace ForumApp.Controllers
 
         public async Task<IActionResult> Create()
         {
+            ViewBag.ParentCategories = new SelectList(await _context.Categories.ToListAsync(), "CategoryId", "Name");
             return View();
         }
 
@@ -27,21 +29,25 @@ namespace ForumApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var c = new Category()
-                {
-                    Name = model.Name
-                };
+                //var c = new Category()
+                //{
+                //    Name = model.Name
+                //};
 
-                _context.Categories.Add(c);
+                _context.Categories.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ParentCategories = new SelectList(await _context.Categories.ToListAsync(), "CategoryId", "Name");
             return View(model);
         }
 
         public async Task<IActionResult> Index()
         {
-            var kategorije = await _context.Categories.ToListAsync();
+            var kategorije = await _context.Categories
+                .Include(c=>c.Subcategories)
+                .Where(c=>c.ParentCategoryId == null)
+                .ToListAsync();
             return View(kategorije);
         }
 
@@ -53,13 +59,13 @@ namespace ForumApp.Controllers
             if (c == null) return NotFound();
 
 
-            var kategorija = new Category
-            {
-                CategoryId = c.CategoryId,
-                Name = c.Name
-            };
+            ViewBag.ParentCategories = new SelectList(
+                await _context.Categories.Where(c => c.CategoryId != id).ToListAsync(),
+                "CategoryId",
+                "Name"
+            );
 
-            return View(kategorija);
+            return View(c);
         }
 
 
@@ -76,9 +82,15 @@ namespace ForumApp.Controllers
                 if (kategorija == null) return NotFound();
 
                 kategorija.Name = model.Name;
+                kategorija.ParentCategoryId = model.ParentCategoryId;
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ParentCategories = new SelectList(
+                await _context.Categories.Where(c => c.CategoryId != id).ToListAsync(),
+                "CategoryId",
+                "Name"
+            );
             return View(model);
         }
 
@@ -96,17 +108,14 @@ namespace ForumApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var c = await _context.Categories.FindAsync(id);
+            var c = await _context.Categories
+                   .Include(c => c.Subcategories)
+                   .FirstOrDefaultAsync(c => c.CategoryId == id);
 
             if (c == null) return NotFound();
 
-            var k = new Category()
-            {
-                CategoryId = c.CategoryId,
-                Name = c.Name
-            };
 
-            return View(k);
+            return View(c);
         }
     }
 }
