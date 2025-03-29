@@ -1,26 +1,56 @@
 ﻿@model ForumApp.Models.Category
 @{
-    ViewData["Title"] = "Nova kategorija";
+    @if (User.IsInRole("Admin"))
+    {
+        ViewData["Title"] = "Nova kategorija/potkategorija";
+    }
+    else
+    {
+        ViewData["Title"] = "Nova potkategorija";
+
+    }
 }
 
-<h2 class="text-center mb-4">Dodaj novu kategoriju</h2>
+@if (User.IsInRole("Admin"))
+{
+
+    <h2 class="text-center mb-4">Dodaj novu kategoriju/pokategoriju</h2>
+}
+else
+{
+    <h2 class="text-center mb-4">Dodaj novu potkategoriju</h2>
+
+}
 
 
-<form asp-action="Create">
+
+<form asp-action="Create" method="post">
     <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
+        @if (User.IsInRole("Admin"))
+        {
+
+            <label asp-for="Name" class="form-label">Naziv kategorije/potkategorije:</label>
+        }
+        else
+        {
+            <label asp-for="Name" class="form-label">Naziv potkategorije:</label>
+        }
+        <input type="text" asp-for="Name" class="form-control" placeholder="Unesite naziv" />
     </div>
 
-    @* dodato da bi se prikazala lista za izbor roditeljskihh kategorija ukoliko dodajemo potkategoriju *@
     <div class="form-group">
-        <label>Roditeljska Kategorija</label>
-        <select asp-for="ParentCategoryId" asp-items="ViewBag.ParentCategories" class="form-control">
-            <option value="">Bez roditelja</option>
+        <label>Roditeljska kategorija</label>
+        <select asp-for="ParentCategoryId" asp-items="ViewBag.ParentCategories">
+            @if (User.IsInRole("Admin"))
+            {
+                <option value="">Bez roditelja</option>
+            }
         </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Sačuvaj</button>
-</form>
+    <div class="d-flex justify-content-center" mt-1>
+        <button type="submit" class="btn btn-success">Kreiraj</button>
+    </div>
 
+</form>
 

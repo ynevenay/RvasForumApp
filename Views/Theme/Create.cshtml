@@ -1,31 +1,30 @@
 ﻿@model ForumApp.Models.ViewModels.ThemeCreateViewModel
-
 @{
     ViewData["Title"] = "Kreiraj novu temu";
 }
 
-<h2>Kreiraj novu temu</h2>
+<h2>Objavi temu</h2>
 
 <form asp-action="Create" method="post">
     <div class="mb-3">
-        <label asp-for="Title" class="form-label">Naslov</label>
+        <label asp-for="Title">Naslov</label>
         <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Content" class="form-label">Sadržaj</label>
-        <textarea asp-for="Content" class="form-control"></textarea>
-        <span asp-validation-for="Content" class="text-danger"></span>
+        <label asp-for="Content" class="form-label">Sadrzaj</label>
+        <textarea asp-for="Content" style="resize:none;" class="form-control"></textarea>
     </div>
 
+
     <div class="mb-3">
-        <label asp-for="CategoryId" class="form-label">Kategorija</label>
+        <label asp-for="CategoryId">Kategorija:</label>
+
         <select asp-for="CategoryId" class="form-control" asp-items="Model.Categories">
-            <option value="">-- Izaberi kategoriju --</option>
+            <option value="">- Izaberi kategoriju -</option>
         </select>
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Objavi temu</button>
+    <button type="submit" class="btn btn-success">Objavi temu</button>
+
 </form>

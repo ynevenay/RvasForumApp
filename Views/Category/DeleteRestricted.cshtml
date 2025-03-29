@@ -1,0 +1,9 @@
+﻿@model ForumApp.Models.Category
+@{
+    ViewData["Title"] = "Brisanje onemoguceno";
+}
+
+<h1 class="text-center text-danger">Brisanje ove kategorije nije moguce</h1>
+<h2 class="text-center">@Model.Name</h2>
+
+<partial name="_Subcategories"/>

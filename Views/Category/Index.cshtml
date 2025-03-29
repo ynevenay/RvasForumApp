@@ -3,24 +3,34 @@
     ViewData["Title"] = "Lista kategorija";
 }
 
-<h2 class="text-center mb-4">Kategorije</h2>
+<h2 class="text-center mb-4 mb-3">Kategorije:</h2>
 
-<div class="d-flex justify-content-end mb-3">
-    <a asp-action="Create" class="btn btn-success">Dodaj novu kategoriju</a>
+<div class="d-flex justify-content-end">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-success">Dodaj novu kategoriju</a>
+    }
+    else
+    {
+        <a asp-action="Create" class="btn btn-success">Dodaj novu potkategoriju</a>
+
+    }
 </div>
 
-<table class="table table-striped">
+
+<table class=" table table-striped">
+
     <thead>
         <tr>
             <th>Naziv</th>
             <th>Opcije</th>
         </tr>
     </thead>
+
     <tbody>
-        @* dodato da bismo prikazali i podatke i opcije za kategorije i potkategorije i da bi bile hijerarhijski prikazane *@
-        @foreach (var c in Model.Where(c => c.ParentCategoryId == null)) // Samo glavne kategorije
+        @foreach (var k in Model.Where(k => k.ParentCategoryId == null))
         {
-            <partial name="_CategoryRow" model="c" />
+            <partial name="_CategoryRow" model="k"></partial>
         }
     </tbody>
 </table>

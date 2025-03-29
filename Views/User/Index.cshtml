@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ForumApp.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Korisnici foruma";
+}
+
+<div class="container my-4">
+    <h2 class="text-center mb-3">Korisnici foruma</h2>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Korisnicko ime</th>
+                <th>Datum registracije</th>
+                <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var k in Model)
+            {
+                <tr>
+                    <td>@k.Email</td>
+                    <td>@k.DisplayName</td>
+                    <td>@k.JoinedAt</td>
+                    <td>
+                        <a class="btn btn-warning">Pregledaj nalog</a>
+                        <a class="btn btn-warning">Pregledaj nalog</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

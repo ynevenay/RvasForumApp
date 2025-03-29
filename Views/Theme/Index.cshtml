@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ForumApp.Models.Theme>
+@{
+    ViewData["Title"] = "Teme";
+}
+
+<div class="container my-4">
+    <h2 class="text-center mb-4">Sve teme</h2>
+    <a href="@Url.Action("Create","Theme")" class="btn btn-success mt-auto">Objavi</a>
+
+    <div class="row g-3 mt-2">
+        @foreach(var t in Model){
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="text-primary">@t.Title</h5>
+                        <p class="text-muted small"><strong>Kategorija:</strong>@t.Category?.Name</p>
+                        <p class="text-muted small"><strong>Korisničko ime:</strong>@t.User?.DisplayName</p>
+                        <p class="text-muted small">Datum objave: @t.CreatedAt.ToString("dd.MM.yyyy")</p>
+                        <a href="@Url.Action("Details","Theme", new{id = t.ThemeId})" class="btn btn-primary mt-auto">Detaljnije</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

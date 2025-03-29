@@ -1,0 +1,22 @@
+﻿@model ForumApp.Models.Category
+
+<p>Kategorija ima sledece potkategorije</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Identifikator</th>
+            <th>Naziv</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var s in Model.Subcategories){
+            <tr>
+                <td>@s.CategoryId</td>
+                <td>@s.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-primary">Nazad na listu</a>

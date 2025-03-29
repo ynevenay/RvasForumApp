@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForumApp.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin,Moderator")]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -19,7 +19,6 @@ namespace ForumApp.Controllers
 
         public async Task<IActionResult> Create()
         {
-            //dodato je radi prikaza svih roditeljskih kategorija ukoliko zelimo da dodamo potkategoriju
             ViewBag.ParentCategories = new SelectList(await _context.Categories.Where(c=>c.ParentCategoryId==null)
                 .ToListAsync(), "CategoryId", "Name");
             return View();
@@ -120,12 +119,22 @@ namespace ForumApp.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var c = await _context.Categories.FindAsync(id);
+            var c = await _context.Categories
+                .Include(c => c.Subcategories)
+                .FirstOrDefaultAsync(c => c.CategoryId == id);
+
+            if (c == null) return NotFound();
+
+            bool imaPotkategorije = await _context.Categories.AnyAsync(c => c.ParentCategoryId == id);
+
+            if (imaPotkategorije) return View("DeleteRestricted", c);
+
 
             _context.Categories.Remove(c);
             await _context.SaveChangesAsync();

@@ -26,10 +26,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @if(User.IsInRole("Admin")){
+                        @if(User.IsInRole("Admin") || User.IsInRole("Moderator")){
 
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Kategorije</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Korisnici foruma</a>
+                            </li>
+                        }
+                        @if(User.Identity.IsAuthenticated){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Theme" asp-action="Index">Teme</a>
                             </li>
                         }
                     </ul>

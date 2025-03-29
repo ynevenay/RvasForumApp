@@ -1,13 +1,23 @@
 ﻿@model ForumApp.Models.Category
 @{
-    ViewData["Title"] = "Detaljno o kategoriji";
+    ViewData["Title"] = Model.Name;
 }
+@if (Model.ParentCategoryId != null)
+{
+    <h2>Potkategoeija @Model.CategoryId</h2>
+}
+else{
 
-
-<h2>Kategorija @Model.CategoryId</h2>
+    <h2>Kategorija @Model.CategoryId</h2>
+}
 
 <p>Naziv: @Model.Name</p>
 @* ukoliko se radi o potkategoriji prikazuje se koja je njena roditeljska kategorija *@
-@if(Model.ParentCategoryId != null){
+@if (Model.ParentCategoryId != null)
+{
     <p>Roditeljska kategorija: @Model.ParentCategory?.Name</p>
+}
+else if (Model.Subcategories.Any())
+{
+    <partial name="_Subcategories" />
 }
