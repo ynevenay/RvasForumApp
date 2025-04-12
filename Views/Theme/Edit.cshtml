@@ -1,0 +1,16 @@
+﻿@model ForumApp.Models.ViewModels.ThemeEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Theme";
+}
+
+<h2>Edit Theme</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for="ThemeId" />
+        <label for="Content">Content</label>
+        <textarea class="form-control" id="Content" name="Content" rows="5">@Model.Content</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Sacuvaj promenee</button>
+</form>

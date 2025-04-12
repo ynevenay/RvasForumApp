@@ -1,0 +1,56 @@
+﻿@model List<ForumApp.Models.Comment>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Nema komentara. Budite prvi koji će komentarisati!</p>
+}
+else
+{
+    <ul class="list-unstyled">
+        @foreach (var komentar in Model.Where(k => k.ParentCommentId == null))
+        {
+            <li class="mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-1"><strong>@komentar.User?.DisplayName</strong> kaže:</p>
+                        <p class="text-muted small comment-content">@komentar.Content</p>
+
+                        <button class="btn btn-link text-primary p-0" onclick="toggleReplyForm(@komentar.CommentId)">Odgovori</button>
+                        <div id="replyForm-@komentar.CommentId" class="mt-2 d-none">
+                            <form asp-controller="Comment" asp-action="AddComment" method="post">
+                                <input type="hidden" name="temaId" value="@komentar.ThemeId" />
+                                <input type="hidden" name="roditeljskiKomentarId" value="@komentar.CommentId" />
+                                <textarea name="sadrzaj" class="form-control mb-2" placeholder="Odgovori..."></textarea>
+                                <button type="submit" class="btn btn-sm btn-primary">Pošalji</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                @if (komentar.Replies != null && komentar.Replies.Any())
+                {
+                    <ul class="list-unstyled ms-4 mt-2">
+                        @foreach (var child in komentar.Replies)
+                        {
+                            <li class="mb-2">
+                                <div class="card shadow-sm bg-light">
+                                    <div class="card-body">
+                                        <p class="mb-1"><strong>@child.User?.DisplayName</strong> odgovara:</p>
+                                        <p class="text-muted small comment-content">@child.Content</p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+}
+
+<script>
+    function toggleReplyForm(commentId) {
+        let form = document.getElementById("replyForm-" + commentId);
+        form.classList.toggle("d-none");
+    }
+</script>

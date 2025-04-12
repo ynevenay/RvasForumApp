@@ -18,6 +18,11 @@
                         <p class="text-muted small"><strong>Korisničko ime:</strong>@t.User?.DisplayName</p>
                         <p class="text-muted small">Datum objave: @t.CreatedAt.ToString("dd.MM.yyyy")</p>
                         <a href="@Url.Action("Details","Theme", new{id = t.ThemeId})" class="btn btn-primary mt-auto">Detaljnije</a>
+
+                    @if (t.UserId == ViewBag.CurrentUserId)
+                    {
+                        <a href="@Url.Action("Edit", "Theme", new { id = t.ThemeId })" class="btn btn-warning mt-2">Edituj</a>
+                    }
                     </div>
                 </div>
             </div>

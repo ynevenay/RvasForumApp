@@ -97,7 +97,7 @@ namespace ForumApp.Controllers
                 .Include(t => t.Category)
                 .Include(t => t.User)
                 .ToListAsync();
-
+            ViewBag.CurrentUserId = _userManager.GetUserId(User);
             return View(teme);
         }
 
@@ -109,6 +109,8 @@ namespace ForumApp.Controllers
                 .Include(t => t.User)
                 .Include(t => t.Comments)
                     .ThenInclude(k => k.User)
+                .Include(t => t.Comments)
+                    .ThenInclude(k => k.Replies)
                 .FirstOrDefaultAsync(t => t.ThemeId == id);
 
             if (t == null) return NotFound();
@@ -116,7 +118,63 @@ namespace ForumApp.Controllers
             return View(t);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            // Preuzimanje teme iz baze
+            var theme = await _context.Themes
+                .FirstOrDefaultAsync(t => t.ThemeId == id);
 
+            if (theme == null)
+            {
+                return NotFound();
+            }
+
+            var userId = _userManager.GetUserId(User);
+            if (theme.UserId != userId)
+            {
+                return Forbid();
+            }
+
+            var viewModel = new ThemeEditViewModel
+            {
+                ThemeId = theme.ThemeId,
+                Content = theme.Content
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ThemeEditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var theme = await _context.Themes
+                .FirstOrDefaultAsync(t => t.ThemeId == model.ThemeId);
+
+            if (theme == null)
+            {
+                return NotFound();
+            }
+
+            var userId = _userManager.GetUserId(User);
+            if (theme.UserId != userId)
+            {
+                return Forbid();
+            }
+
+            theme.Content = model.Content;
+            theme.CreatedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = theme.ThemeId });
+        }
 
 
     }
