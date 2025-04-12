@@ -14,5 +14,8 @@
         public Category Category { get; set; }
 
         public List<Comment> Comments { get; set; } = new();
+
+        public List<Vote> Votes { get; set; } = new();
+
     }
 }

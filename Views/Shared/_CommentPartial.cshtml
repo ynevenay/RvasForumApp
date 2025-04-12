@@ -1,5 +1,7 @@
 ﻿@model List<ForumApp.Models.Comment>
-
+@{
+    var userId = ViewData["LoggedUserId"]?.ToString();
+}
 @if (!Model.Any())
 {
     <p class="text-muted">Nema komentara. Budite prvi koji će komentarisati!</p>
@@ -14,6 +16,38 @@ else
                     <div class="card-body">
                         <p class="mb-1"><strong>@komentar.User?.DisplayName</strong> kaže:</p>
                         <p class="text-muted small comment-content">@komentar.Content</p>
+
+                        @{
+                            var glas = komentar.Votes?.FirstOrDefault(v => v.UserId == userId);
+
+                            bool lajk = glas?.IsUpVote == true;
+                            bool dislajk = glas?.IsUpVote == false;
+
+                        }
+
+                        @if (userId != null){
+                            <div class="d-flex align-items-center gap-2 mt-2">
+                                <form method="post" asp-controller="Comment" asp-action="LikeComment">
+                                    <input type="hidden" name="commentId" value="@komentar.CommentId"/>
+
+                                    <button type="submit" class="btn btn-sm @(lajk ? "btn-success" : "btn-outline-success")">
+                                        👍 (@komentar.Votes?.Count(v=>v.IsUpVote))
+                                    </button>
+
+                                </form>
+
+
+                                <form method="post" asp-controller="Comment" asp-action="DislikeComment">
+                                    <input type="hidden" name="commentId" value="@komentar.CommentId" />
+
+                                    <button type="submit" class="btn btn-sm @(dislajk ? "btn-danger" : "btn-outline-danger")">
+                                        👎 (@komentar.Votes?.Count(v => !v.IsUpVote))
+                                    </button>
+
+                                </form>
+
+                            </div>
+                        }
 
                         <button class="btn btn-link text-primary p-0" onclick="toggleReplyForm(@komentar.CommentId)">Odgovori</button>
                         <div id="replyForm-@komentar.CommentId" class="mt-2 d-none">
@@ -37,6 +71,39 @@ else
                                     <div class="card-body">
                                         <p class="mb-1"><strong>@child.User?.DisplayName</strong> odgovara:</p>
                                         <p class="text-muted small comment-content">@child.Content</p>
+
+                                        @{
+                                            var glasR = komentar.Votes?.FirstOrDefault(v => v.UserId == userId);
+
+                                            bool lajkR = glas?.IsUpVote == true;
+                                            bool dislajkR = glas?.IsUpVote == false;
+
+                                        }
+
+                                        @if (userId != null)
+                                        {
+                                            <div class="d-flex align-items-center gap-2 mt-1">
+                                                <form method="post" asp-controller="Comment" asp-action="LikeComment">
+                                                    <input type="hidden" name="commentId" value="@child.CommentId" />
+
+                                                    <button type="submit" class="btn btn-sm @(lajkR ? "btn-success" : "btn-outline-success")">
+                                                        👍 (@child.Votes?.Count(v => v.IsUpVote))
+                                                    </button>
+
+                                                </form>
+
+
+                                                <form method="post" asp-controller="Comment" asp-action="DislikeComment">
+                                                    <input type="hidden" name="commentId" value="@child.CommentId" />
+
+                                                    <button type="submit" class="btn btn-sm @(dislajkR ? "btn-danger" : "btn-outline-danger")">
+                                                        👎 (@child.Votes?.Count(v => !v.IsUpVote))
+                                                    </button>
+
+                                                </form>
+
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </li>

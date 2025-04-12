@@ -15,5 +15,9 @@
         public int? ParentCommentId { get; set; }
         public Comment? ParentComment { get; set; }
         public List<Comment> Replies { get; set; } = new();
+
+
+        public List<Vote> Votes { get; set; } = new();
+
     }
 }

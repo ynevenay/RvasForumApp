@@ -111,10 +111,13 @@ namespace ForumApp.Controllers
                     .ThenInclude(k => k.User)
                 .Include(t => t.Comments)
                     .ThenInclude(k => k.Replies)
+                .Include(t => t.Comments)
+                    .ThenInclude(k => k.Votes)
+                .Include(t => t.Votes)
                 .FirstOrDefaultAsync(t => t.ThemeId == id);
 
             if (t == null) return NotFound();
-
+            ViewData["LoggedUserId"] = _userManager.GetUserId(User);
             return View(t);
         }
 
@@ -176,6 +179,81 @@ namespace ForumApp.Controllers
             return RedirectToAction("Details", new { id = theme.ThemeId });
         }
 
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpTheme(int themeId)
+        {
+            var userId = _userManager.GetUserId(User);
+            var postojeciGlas = await _context.Votes.FirstOrDefaultAsync(v => v.UserId == userId && v.ThemeId == themeId);
 
+
+            if (postojeciGlas != null)
+            {
+                if (postojeciGlas.IsUpVote)
+                {
+
+                    //ponistavanje glasa
+                    _context.Votes.Remove(postojeciGlas);
+
+                }
+                else
+                {
+                    //iz dislike u like
+                    postojeciGlas.IsUpVote = true;
+                }
+            }
+            else
+            {
+                _context.Votes.Add(new Vote
+                {
+                    ThemeId = themeId,
+                    UserId = userId,
+                    IsUpVote = true
+                });
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new { id = themeId });
+
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DownTheme(int themeId)
+        {
+            var userId = _userManager.GetUserId(User);
+            var postojeciGlas = await _context.Votes.FirstOrDefaultAsync(v => v.UserId == userId && v.ThemeId == themeId);
+
+
+            if (postojeciGlas != null)
+            {
+                if (!postojeciGlas.IsUpVote)
+                {
+
+                    //ponistavanje glasa
+                    _context.Votes.Remove(postojeciGlas);
+
+                }
+                else
+                {
+                    //iz lajka u dislike
+                    postojeciGlas.IsUpVote = false;
+                }
+            }
+            else
+            {
+                _context.Votes.Add(new Vote
+                {
+                    ThemeId = themeId,
+                    UserId = userId,
+                    IsUpVote = false
+                });
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new { id = themeId });
+
+        }
     }
 }

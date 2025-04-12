@@ -52,5 +52,88 @@ namespace ForumApp.Controllers
 
             return RedirectToAction("Details", "Theme", new { id = temaId });
         }
+
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> LikeComment(int commentId)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            var komentar = await _context.Comments.FindAsync(commentId);
+
+            if (komentar == null) return NotFound();
+
+
+            var posojeciGlas = await _context.Votes.FirstOrDefaultAsync(v => v.UserId == userId && v.CommentId == commentId);
+
+
+            if (posojeciGlas != null)
+            {
+                if (posojeciGlas.IsUpVote)
+                {
+                    //ako klikne opet na lajk brise se taj glas tj ponistava se 
+                    _context.Votes.Remove(posojeciGlas);
+                }
+                else
+                {
+                    // iz dislajka u lajk
+                    posojeciGlas.IsUpVote = true;
+                }
+            }
+            else
+            {
+                _context.Votes.Add(new Vote
+                {
+                    UserId = userId,
+                    CommentId = commentId,
+                    IsUpVote = true
+                });
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", "Theme", new { id = komentar.ThemeId });
+        }
+
+
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DislikeComment(int commentId)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            var komentar = await _context.Comments.FindAsync(commentId);
+
+            if (komentar == null) return NotFound();
+
+
+            var posojeciGlas = await _context.Votes.FirstOrDefaultAsync(v => v.UserId == userId && v.CommentId == commentId);
+
+
+            if (posojeciGlas != null)
+            {
+                if (!posojeciGlas.IsUpVote)
+                {
+                    //ako klikne opet na lajk brise se taj glas tj ponistava se 
+                    _context.Votes.Remove(posojeciGlas);
+                }
+                else
+                {
+                    // iz lajka u dislajk
+                    posojeciGlas.IsUpVote = false;
+                }
+            }
+            else
+            {
+                _context.Votes.Add(new Vote
+                {
+                    UserId = userId,
+                    CommentId = commentId,
+                    IsUpVote = false
+                });
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", "Theme", new { id = komentar.ThemeId });
+        }
     }
 }
