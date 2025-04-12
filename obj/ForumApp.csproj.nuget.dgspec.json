@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Vezbe RVAS\\RvasForumApp\\ForumApp.csproj": {}
+    "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\ForumApp.csproj": {}
   },
   "projects": {
-    "F:\\Vezbe RVAS\\RvasForumApp\\ForumApp.csproj": {
+    "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\ForumApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Vezbe RVAS\\RvasForumApp\\ForumApp.csproj",
+        "projectUniqueName": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\ForumApp.csproj",
         "projectName": "ForumApp",
-        "projectPath": "F:\\Vezbe RVAS\\RvasForumApp\\ForumApp.csproj",
+        "projectPath": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\ForumApp.csproj",
         "packagesPath": "C:\\Users\\milen\\.nuget\\packages\\",
-        "outputPath": "F:\\Vezbe RVAS\\RvasForumApp\\obj\\",
+        "outputPath": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\programi\\visual studio\\Nova fascikla (3)\\NuGetPackages"

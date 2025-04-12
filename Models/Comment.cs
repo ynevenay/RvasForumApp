@@ -11,5 +11,9 @@
 
         public int ThemeId { get; set; }
         public Theme Theme { get; set; }
+
+        public int? ParentCommentId { get; set; }
+        public Comment? ParentComment { get; set; }
+        public List<Comment> Replies { get; set; } = new();
     }
 }
