@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ForumApp.Data.Migrations
+namespace ForumApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250317185152_DodatePotkategorije")]
-    partial class DodatePotkategorije
+    [Migration("20250412181210_Fix i komentari")]
+    partial class Fixikomentari
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -133,6 +133,9 @@ namespace ForumApp.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ThemeId")
                         .HasColumnType("int");
 
@@ -141,6 +144,8 @@ namespace ForumApp.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("CommentId");
+
+                    b.HasIndex("ParentCommentId");
 
                     b.HasIndex("ThemeId");
 
@@ -433,6 +438,11 @@ namespace ForumApp.Data.Migrations
 
             modelBuilder.Entity("ForumApp.Models.Comment", b =>
                 {
+                    b.HasOne("ForumApp.Models.Comment", "ParentComment")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("ForumApp.Models.Theme", "Theme")
                         .WithMany("Comments")
                         .HasForeignKey("ThemeId")
@@ -444,6 +454,8 @@ namespace ForumApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("ParentComment");
 
                     b.Navigation("Theme");
 
@@ -590,6 +602,11 @@ namespace ForumApp.Data.Migrations
                     b.Navigation("Subcategories");
 
                     b.Navigation("Themes");
+                });
+
+            modelBuilder.Entity("ForumApp.Models.Comment", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("ForumApp.Models.Theme", b =>

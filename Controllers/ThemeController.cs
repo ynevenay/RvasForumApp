@@ -107,6 +107,8 @@ namespace ForumApp.Controllers
             var t = await _context.Themes
                 .Include(t => t.Category)
                 .Include(t => t.User)
+                .Include(t => t.Comments)
+                    .ThenInclude(k => k.User)
                 .FirstOrDefaultAsync(t => t.ThemeId == id);
 
             if (t == null) return NotFound();

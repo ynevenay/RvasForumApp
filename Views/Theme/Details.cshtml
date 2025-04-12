@@ -23,6 +23,19 @@
             @Model.Content
         </p>
     </div>
+
+
+    <!-- Dodavanje komentara -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-secondary text-white">Dodaj komentar</div>
+        <div class="card-body">
+            <form asp-controller="Comment" asp-action="AddComment" method="post">
+                <input type="hidden" name="temaId" value="@Model.ThemeId" />
+                <textarea name="sadrzaj" class="form-control mb-2" placeholder="Napiši komentar..." required></textarea>
+                <button type="submit" class="btn btn-primary">Pošalji</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 
