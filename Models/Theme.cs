@@ -15,7 +15,11 @@
 
         public List<Comment> Comments { get; set; } = new();
 
+        //lista glasova
         public List<Vote> Votes { get; set; } = new();
 
+
+        //arhiviranje
+        public bool IsHidden { get; set; } = false;
     }
 }

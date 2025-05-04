@@ -16,8 +16,12 @@
         public Comment? ParentComment { get; set; }
         public List<Comment> Replies { get; set; } = new();
 
-
+        //lista glasova
         public List<Vote> Votes { get; set; } = new();
+
+        //arhiviranjee
+        public bool IsHidden { get; set; } = false;
+
 
     }
 }

@@ -1,0 +1,122 @@
+﻿@model List<ForumApp.Models.Report>
+@{
+    ViewData["Title"] = "Pregled prijava";
+}
+
+<h2 class="mb-4">📋 Pregled prijava</h2>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Tip</th>
+            <th>Sadržaj</th>
+            <th>Prijavio</th>
+            <th>Razlog</th>
+            <th>Status</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var report in Model)
+        {
+            bool isComment = report.CommentId.HasValue;
+
+            <tr>
+                <td>
+                    <span class="badge bg-info text-dark">
+                        @(isComment ? "Komentar" : "Tema")
+                    </span>
+                </td>
+                <td>
+                    @if (isComment)
+                    {
+                        <!-- sadrzaj komentatra i lik do teme na koju je ostavljeen -->
+                        <div>
+                            <span class="text-muted">@report.Comment.Content</span>
+                            <small class="text-secondary">— na temu:</small>
+                            <a asp-controller="Theme"
+                               asp-action="Details"
+                               asp-route-id="@report.Comment.ThemeId">
+                                @report.Comment.Theme.Title
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <a asp-controller="Theme"
+                           asp-action="Details"
+                           asp-route-id="@report.ThemeId">
+                            @report.Theme.Title
+                        </a>
+                    }
+                </td>
+                <td>@report.User?.DisplayName</td>
+                <td class="text-wrap" style="max-width:250px;">@report.Reason</td>
+                <td>
+                    @{
+                        var cls = report.Status switch
+                        {
+                            "Pregledano" => "success",
+                            "Odbijeno" => "danger",
+                            _ => "warning"
+                        };
+                    }
+                    <span class="badge bg-@cls">@report.Status</span>
+                </td>
+                <td>
+                    <form asp-action="ChangeStatus" method="post" class="d-flex gap-1">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="reportId" value="@report.ReportId" />
+                        @Html.DropDownList(
+                                 "status",
+                                 new SelectList(new[] { "Na cekanju", "Pregledano", "Odbijeno" }, report.Status),
+                                 htmlAttributes: new { @class = "form-select form-select-sm w-auto" }
+                                 )
+                        <button type="submit" class="btn btn-sm btn-outline-primary" title="Promeni status">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </button>
+                    </form>
+                    <div class="d-flex gap-1">
+                        @if(isComment){
+
+                            @if(!report.Comment.IsHidden){
+
+                                <form asp-action="HideComment" method="post" onsubmit="return confirm('Sakriti ovaj komentar?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="commentId" value="@report.CommentId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Sakrij</button>
+                                </form>
+                            }
+                            else{
+                                <form asp-action="UnhideComment" method="post" onsubmit="return confirm('Prikazati ovaj komentar?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="commentId" value="@report.CommentId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-success">Prikaži</button>
+                                </form>
+                            }
+
+                        }
+                        else{
+                            @if(!report.Theme.IsHidden){
+
+                                <form asp-action="HideTheme" method="post" onsubmit="return confirm('Sakriti ovu temu?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="themeId" value="@report.ThemeId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Sakrij</button>
+                                </form>
+                            }
+                            else{
+                                <form asp-action="UnhideTheme" method="post" onsubmit="return confirm('Prikazati ovu temu?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="themeId" value="@report.ThemeId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-success">Prikaži</button>
+                                </form>
+                            }
+
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

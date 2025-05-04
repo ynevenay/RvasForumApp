@@ -2,122 +2,140 @@
 @{
     var userId = ViewData["LoggedUserId"]?.ToString();
 }
+
 @if (!Model.Any())
 {
     <p class="text-muted">Nema komentara. Budite prvi koji će komentarisati!</p>
 }
 else
 {
-    <ul class="list-unstyled">
-        @foreach (var komentar in Model.Where(k => k.ParentCommentId == null))
-        {
-            <li class="mb-3">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <p class="mb-1"><strong>@komentar.User?.DisplayName</strong> kaže:</p>
-                        <p class="text-muted small comment-content">@komentar.Content</p>
+    @foreach (var komentar in Model.Where(k => k.ParentCommentId == null))
+    {
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <strong>@komentar.User?.DisplayName</strong>
+                    <small class="text-muted">@komentar.CreatedAt.ToString("dd.MM.yyyy HH:mm")</small>
+                </div>
+                <p class="card-text">@komentar.Content</p>
 
-                        @{
-                            var glas = komentar.Votes?.FirstOrDefault(v => v.UserId == userId);
+                @if (userId != null)
+                {
+                    <div class="d-flex flex-wrap gap-2">
+                        <form method="post" asp-controller="Comment" asp-action="LikeComment" class="m-0">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="commentId" value="@komentar.CommentId" />
+                            <button type="submit" class="btn btn-sm btn-outline-success" title="Lajkuj">
+                                <i class="bi bi-hand-thumbs-up"></i> @komentar.Votes?.Count(v => v.IsUpVote)
+                            </button>
+                        </form>
+                        <form method="post" asp-controller="Comment" asp-action="DislikeComment" class="m-0">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="commentId" value="@komentar.CommentId" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Dislajkuj">
+                                <i class="bi bi-hand-thumbs-down"></i> @komentar.Votes?.Count(v => !v.IsUpVote)
+                            </button>
+                        </form>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#reply-@komentar.CommentId" aria-expanded="false" aria-controls="reply-@komentar.CommentId">
+                            <i class="bi bi-reply"></i> Odgovori
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning" data-bs-toggle="collapse" data-bs-target="#report-@komentar.CommentId" aria-expanded="false" aria-controls="report-@komentar.CommentId">
+                            <i class="bi bi-exclamation-triangle-fill"></i> Prijavi
+                        </button>
+                    </div>
 
-                            bool lajk = glas?.IsUpVote == true;
-                            bool dislajk = glas?.IsUpVote == false;
-
-                        }
-
-                        @if (userId != null){
-                            <div class="d-flex align-items-center gap-2 mt-2">
-                                <form method="post" asp-controller="Comment" asp-action="LikeComment">
-                                    <input type="hidden" name="commentId" value="@komentar.CommentId"/>
-
-                                    <button type="submit" class="btn btn-sm @(lajk ? "btn-success" : "btn-outline-success")">
-                                        👍 (@komentar.Votes?.Count(v=>v.IsUpVote))
-                                    </button>
-
-                                </form>
-
-
-                                <form method="post" asp-controller="Comment" asp-action="DislikeComment">
-                                    <input type="hidden" name="commentId" value="@komentar.CommentId" />
-
-                                    <button type="submit" class="btn btn-sm @(dislajk ? "btn-danger" : "btn-outline-danger")">
-                                        👎 (@komentar.Votes?.Count(v => !v.IsUpVote))
-                                    </button>
-
-                                </form>
-
-                            </div>
-                        }
-
-                        <button class="btn btn-link text-primary p-0" onclick="toggleReplyForm(@komentar.CommentId)">Odgovori</button>
-                        <div id="replyForm-@komentar.CommentId" class="mt-2 d-none">
-                            <form asp-controller="Comment" asp-action="AddComment" method="post">
-                                <input type="hidden" name="temaId" value="@komentar.ThemeId" />
-                                <input type="hidden" name="roditeljskiKomentarId" value="@komentar.CommentId" />
-                                <textarea name="sadrzaj" class="form-control mb-2" placeholder="Odgovori..."></textarea>
-                                <button type="submit" class="btn btn-sm btn-primary">Pošalji</button>
+                    <div class="collapse mt-3" id="report-@komentar.CommentId">
+                        <div class="card card-body bg-light">
+                            <form asp-controller="Report" asp-action="ReportComment" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="commentId" value="@komentar.CommentId" />
+                                <div class="mb-2">
+                                    <textarea name="reason" class="form-control" rows="2" placeholder="Unesite razlog prijave..." required></textarea>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-sm btn-danger">Pošalji</button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="collapse" data-bs-target="#report-@komentar.CommentId">Otkaži</button>
+                                </div>
                             </form>
                         </div>
                     </div>
-                </div>
 
-                @if (komentar.Replies != null && komentar.Replies.Any())
+                    <div class="collapse mt-3" id="reply-@komentar.CommentId">
+                        <div class="card card-body bg-light">
+                            <form asp-controller="Comment" asp-action="AddComment" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="temaId" value="@komentar.ThemeId" />
+                                <input type="hidden" name="roditeljskiKomentarId" value="@komentar.CommentId" />
+                                <div class="mb-2">
+                                    <textarea name="sadrzaj" class="form-control" rows="2" placeholder="Napiši odgovor..." required></textarea>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-sm btn-primary">Pošalji</button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="collapse" data-bs-target="#reply-@komentar.CommentId">Otkaži</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @* odgovori na parent komentare *@
+        @if (komentar.Replies?.Any() == true)
+        {
+            <div class="ms-4">
+                @foreach (var child in komentar.Replies)
                 {
-                    <ul class="list-unstyled ms-4 mt-2">
-                        @foreach (var child in komentar.Replies)
-                        {
-                            <li class="mb-2">
-                                <div class="card shadow-sm bg-light">
-                                    <div class="card-body">
-                                        <p class="mb-1"><strong>@child.User?.DisplayName</strong> odgovara:</p>
-                                        <p class="text-muted small comment-content">@child.Content</p>
+                    <div class="card mb-2 shadow-sm bg-light">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <strong>@child.User?.DisplayName</strong>
+                                <small class="text-muted">@child.CreatedAt.ToString("dd.MM.yyyy HH:mm")</small>
+                            </div>
+                            <p class="card-text">@child.Content</p>
 
-                                        @{
-                                            var glasR = komentar.Votes?.FirstOrDefault(v => v.UserId == userId);
+                            @if (userId != null)
+                            {
+                                <div class="d-flex gap-2">
+                                    <form method="post" asp-controller="Comment" asp-action="LikeComment" class="m-0">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="commentId" value="@child.CommentId" />
+                                        <button type="submit" class="btn btn-sm btn-outline-success" title="Lajkuj">
+                                            <i class="bi bi-hand-thumbs-up"></i> @child.Votes?.Count(v => v.IsUpVote)
+                                        </button>
+                                    </form>
+                                    <form method="post" asp-controller="Comment" asp-action="DislikeComment" class="m-0">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="commentId" value="@child.CommentId" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" title="Dislajkuj">
+                                            <i class="bi bi-hand-thumbs-down"></i> @child.Votes?.Count(v => !v.IsUpVote)
+                                        </button>
+                                    </form>
+                                    <button class="btn btn-sm btn-outline-warning" data-bs-toggle="collapse" data-bs-target="#report-@child.CommentId" aria-expanded="false" aria-controls="report-@child.CommentId">
+                                        <i class="bi bi-exclamation-triangle-fill"></i> Prijavi
+                                    </button>
+                                </div>
 
-                                            bool lajkR = glas?.IsUpVote == true;
-                                            bool dislajkR = glas?.IsUpVote == false;
-
-                                        }
-
-                                        @if (userId != null)
-                                        {
-                                            <div class="d-flex align-items-center gap-2 mt-1">
-                                                <form method="post" asp-controller="Comment" asp-action="LikeComment">
-                                                    <input type="hidden" name="commentId" value="@child.CommentId" />
-
-                                                    <button type="submit" class="btn btn-sm @(lajkR ? "btn-success" : "btn-outline-success")">
-                                                        👍 (@child.Votes?.Count(v => v.IsUpVote))
-                                                    </button>
-
-                                                </form>
-
-
-                                                <form method="post" asp-controller="Comment" asp-action="DislikeComment">
-                                                    <input type="hidden" name="commentId" value="@child.CommentId" />
-
-                                                    <button type="submit" class="btn btn-sm @(dislajkR ? "btn-danger" : "btn-outline-danger")">
-                                                        👎 (@child.Votes?.Count(v => !v.IsUpVote))
-                                                    </button>
-
-                                                </form>
-
+                                <div class="collapse mt-2" id="report-@child.CommentId">
+                                    <div class="card card-body bg-white">
+                                        <form asp-controller="Report" asp-action="ReportComment" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="commentId" value="@child.CommentId" />
+                                            <div class="mb-2">
+                                                <textarea name="reason" class="form-control" rows="2" placeholder="Unesite razlog prijave..." required></textarea>
                                             </div>
-                                        }
+                                            <div class="d-flex gap-2">
+                                                <button type="submit" class="btn btn-sm btn-danger">Pošalji</button>
+                                                <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="collapse" data-bs-target="#report-@child.CommentId">Otkaži</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </li>
-                        }
-                    </ul>
+                            }
+                        </div>
+                    </div>
                 }
-            </li>
+            </div>
         }
-    </ul>
-}
-
-<script>
-    function toggleReplyForm(commentId) {
-        let form = document.getElementById("replyForm-" + commentId);
-        form.classList.toggle("d-none");
     }
-</script>
+}

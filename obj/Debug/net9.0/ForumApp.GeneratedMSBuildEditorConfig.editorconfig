@@ -216,6 +216,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Vezbe RVAS/Code first/RvasForumApp/Views/Report/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Vezbe RVAS/Code first/RvasForumApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -258,6 +262,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Vezbe RVAS/Code first/RvasForumApp/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Vezbe RVAS/Code first/RvasForumApp/Views/User/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Vezbe RVAS/Code first/RvasForumApp/Views/_ViewImports.cshtml]

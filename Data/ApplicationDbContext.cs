@@ -68,6 +68,12 @@ namespace ForumApp.Data
                 .WithMany(c => c.Replies)
                 .HasForeignKey(c => c.ParentCommentId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //za arhiviranje
+            modelBuilder.Entity<Theme>()
+                .HasQueryFilter(t => !t.IsHidden);
+            modelBuilder.Entity<Comment>()
+                .HasQueryFilter(c => !c.IsHidden);
         }
     }
 

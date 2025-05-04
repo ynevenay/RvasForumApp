@@ -24,8 +24,16 @@
                     <td>@k.DisplayName</td>
                     <td>@k.JoinedAt</td>
                     <td>
-                        <a class="btn btn-warning">Pregledaj nalog</a>
-                        <a class="btn btn-warning">Pregledaj nalog</a>
+                        <div class="d-flex align-items-center gap-2">
+
+                            <a class="btn btn-warning">Pregledaj nalog</a>
+                        
+                            <form asp-action="Promote" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="userId" value="@k.Id"/>
+                                <button type="submit" class="btn btn-sm btn-success">Promovisi u moderatora</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             }

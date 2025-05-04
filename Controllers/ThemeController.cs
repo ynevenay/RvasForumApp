@@ -91,15 +91,74 @@ namespace ForumApp.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? categoryId, string searchTerm, string sortOrder,int page=1, int pageSize=9)
         {
-            var teme = await _context.Themes
+
+            var themesQuery = _context.Themes
                 .Include(t => t.Category)
                 .Include(t => t.User)
+                .Include(t=>t.Votes)
+                .AsQueryable();
+
+            // Ako je izabrana kategorija, filtriraj po njoj
+            if (categoryId.HasValue)
+            {
+                themesQuery = themesQuery.Where(t => t.CategoryId == categoryId.Value);
+            }
+
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                themesQuery = themesQuery.Where(t => t.Title.Contains(searchTerm));
+            }
+
+            // Sortiranje
+            themesQuery = sortOrder switch
+            {
+                "title_desc" => themesQuery.OrderByDescending(t => t.Title),
+                "votes_up" => themesQuery.OrderByDescending(t => t.Votes.Count(v => v.IsUpVote)),
+                "votes_down" => themesQuery.OrderByDescending(t => t.Votes.Count(v => !v.IsUpVote)),
+                _ => themesQuery.OrderBy(t => t.Title), // podrazmevano poo title asc
+            };
+
+
+            var totalItems = await themesQuery.CountAsync();
+            var themes = await themesQuery
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            //var themes = await themesQuery.ToListAsync();
+
+            // Kategorije za dropdown
+            var kategorije = await _context.Categories
+                .Where(k => k.ParentCategoryId == null)
+                .ToListAsync();
+
+            var selectList = new SelectList(kategorije, "CategoryId", "Name", categoryId);
+
+            var pagedResult = new PagedResult<Theme>
+            {
+                Items = themes,
+                PageNumber = page,
+                PageSize = pageSize,
+                TotalItems = totalItems
+            };
+
+            var viewModel = new ThemeFilterViewModel
+            {
+                PagedThemes =pagedResult,
+                CategorySelectList = selectList,
+                SelectedCategoryId = categoryId,
+                SearchTerm = searchTerm,
+                SortOrder = sortOrder
+            };
+
             ViewBag.CurrentUserId = _userManager.GetUserId(User);
-            return View(teme);
+            return View(viewModel);
         }
+
+
 
 
         public async Task<IActionResult> Details(int id)
@@ -124,7 +183,6 @@ namespace ForumApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            // Preuzimanje teme iz baze
             var theme = await _context.Themes
                 .FirstOrDefaultAsync(t => t.ThemeId == id);
 

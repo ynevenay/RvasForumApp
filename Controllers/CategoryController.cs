@@ -98,17 +98,14 @@ namespace ForumApp.Controllers
 
                 if (kategorija == null) return NotFound();
 
-                // Ažuriranje podataka o kategoriji
                 kategorija.Name = model.Name;
                 //dodato ako se azurira potkategorija
                 kategorija.ParentCategoryId = model.ParentCategoryId; // Izmena roditeljske kategorije
 
-                // Spremanje promena u bazi
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            // dodato Ako dođe do greške, ponovo prikazivanje forme sa lista roditeljskih kategorija
             ViewBag.ParentCategories = new SelectList(
                 await _context.Categories.Where(cat => cat.CategoryId != id).ToListAsync(),
                 "CategoryId",

@@ -1,37 +1,41 @@
 ﻿@model ForumApp.Models.Category
-@* Dodat view partiial kako bi vizuelno docarali da se radi o potkategoriji *@
+
 <tr>
-    <td>
-        @if (Model.ParentCategoryId != null)
-        {
-            <span class="ms-3">└</span>
-        }
-        @Model.Name
+    <td class="@(Model.ParentCategoryId.HasValue ? "ps-4" : "")">
+        <div class="d-flex align-items-center">
+            @if (Model.ParentCategoryId.HasValue)
+            {
+                <span class="me-2 text-muted">└</span>
+            }
+            <span class="fw-semibold">@Model.Name</span>
+        </div>
     </td>
-
-    <td class="d-flex">
-        @if (User.IsInRole("Admin"))
-        {
-
-            <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">Izmeni</a>
-            <a asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-secondary">Detalji</a>
-            <form asp-action="Delete" method="post">
-                <input type="hidden" name="id" value="@Model.CategoryId" />
-                <button type="submit" class="btn btn-danger">Ukloni</button>
-            </form>
-        }
-        else
-        {
-            <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">Izmeni</a>
-            <a asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-secondary">Detalji</a>
-        }
+    <td>
+        <div class="btn-group btn-group-sm" role="group">
+            <a asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-outline-primary" title="Detalji">
+                <i class="bi bi-eye"></i>
+            </a>
+            <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-outline-warning" title="Izmeni">
+                <i class="bi bi-pencil"></i>
+            </a>
+            @if (User.IsInRole("Admin"))
+            {
+                <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Da li ste sigurni da želite da obrišete kategoriju?');">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.CategoryId" />
+                    <button type="submit" class="btn btn-outline-danger" title="Obriši">
+                        <i class="bi bi-trash3-fill"></i>
+                    </button>
+                </form>
+            }
+        </div>
     </td>
 </tr>
 
 @if (Model.Subcategories?.Any() == true)
 {
-    @foreach (var potkategorija in Model.Subcategories)
+    foreach (var sub in Model.Subcategories)
     {
-        <partial name="_CategoryRow" model="potkategorija"></partial>
+        <partial name="_CategoryRow" model="sub" />
     }
 }

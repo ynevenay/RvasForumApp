@@ -1,66 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Vezbe RVAS\\RvasForumApp\\",
+  "WorkspaceRootPath": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\shared\\_categoryrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\shared\\_categoryrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\data\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:data\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\theme\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\theme\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\theme\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\theme\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\shared\\_categoryrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\shared\\_categoryrow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\controllers\\themecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\shared\\_commentpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\shared\\_commentpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\theme\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\theme\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\theme\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\theme\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\controllers\\themecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:controllers\\themecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\models\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:models\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\shared\\_subcategories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\shared\\_subcategories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\views\\user\\menu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\user\\menu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\rvasforumapp\\views\\category\\deleterestricted.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:views\\category\\deleterestricted.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|f:\\vezbe rvas\\code first\\rvasforumapp\\constants\\forumconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0966BBEC-7AFF-4CB8-B286-4F47DC5B8891}|ForumApp.csproj|solutionrelative:constants\\forumconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,197 +78,171 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Category\\Create.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Create.cshtml",
-              "RelativeToolTip": "Views\\Category\\Create.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACoAAAApAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Shared\\_Layout.cshtml*",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml*",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:55:41.254Z",
+              "WhenOpened": "2025-05-04T15:42:34.872Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Category\\Edit.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Edit.cshtml",
-              "RelativeToolTip": "Views\\Category\\Edit.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwBMAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Category\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Category\\Details.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Category\\Details.cshtml",
+              "RelativeToolTip": "Views\\Category\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:54:10.354Z",
+              "WhenOpened": "2025-05-04T15:38:52.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_CategoryRow.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Shared\\_CategoryRow.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_CategoryRow.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Shared\\_CategoryRow.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_CategoryRow.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T15:38:43.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_CommentPartial.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Shared\\_CommentPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_CommentPartial.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Shared\\_CommentPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_CommentPartial.cshtml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAI0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T15:36:46.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "_CategoryRow.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Shared\\_CategoryRow.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_CategoryRow.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Shared\\_CategoryRow.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_CategoryRow.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Theme\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Theme\\Details.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Theme\\Details.cshtml",
+              "RelativeToolTip": "Views\\Theme\\Details.cshtml",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:24:33.213Z",
+              "WhenOpened": "2025-05-04T15:35:05.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ThemeController.cs",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Controllers\\ThemeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ThemeController.cs",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Controllers\\ThemeController.cs",
+              "RelativeToolTip": "Controllers\\ThemeController.cs",
+              "ViewState": "AgIAABsBAAAAAAAAAAAAwD0BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T15:01:12.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Category\\Index.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Index.cshtml",
-              "RelativeToolTip": "Views\\Category\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAGAAAAAAAAAA==",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Theme\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Theme\\Index.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Theme\\Index.cshtml",
+              "RelativeToolTip": "Views\\Theme\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:19:16.907Z",
+              "WhenOpened": "2025-05-04T15:01:01.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAACDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:12:12.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAsAAAAAAAAAA==",
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Models\\ViewModels\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ViewModels\\HomeViewModel.cs",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Models\\ViewModels\\HomeViewModel.cs",
+              "RelativeToolTip": "Models\\ViewModels\\HomeViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T10:07:22.272Z",
+              "WhenOpened": "2025-05-04T14:51:39.207Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Theme\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Theme\\Index.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Theme\\Index.cshtml",
-              "RelativeToolTip": "Views\\Theme\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:06:53.537Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Theme\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Theme\\Create.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Theme\\Create.cshtml",
-              "RelativeToolTip": "Views\\Theme\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:06:42.254Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Program.cs",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAADgAAAAwAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAMwBYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T10:05:37.304Z",
+              "WhenOpened": "2025-05-04T14:51:13.432Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "DbSeeder.cs",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Data\\DbSeeder.cs",
-              "RelativeDocumentMoniker": "Data\\DbSeeder.cs",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Data\\DbSeeder.cs",
-              "RelativeToolTip": "Data\\DbSeeder.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAADoAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T14:50:34.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Menu.cshtml",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\User\\Menu.cshtml",
+              "RelativeDocumentMoniker": "Views\\User\\Menu.cshtml",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Views\\User\\Menu.cshtml",
+              "RelativeToolTip": "Views\\User\\Menu.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T14:48:50.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ForumConstants.cs",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Constants\\ForumConstants.cs",
+              "RelativeDocumentMoniker": "Constants\\ForumConstants.cs",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Constants\\ForumConstants.cs",
+              "RelativeToolTip": "Constants\\ForumConstants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T10:04:59.46Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\Category\\Details.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\Details.cshtml",
-              "RelativeToolTip": "Views\\Category\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:04:03.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Subcategories.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Shared\\_Subcategories.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Subcategories.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Shared\\_Subcategories.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Subcategories.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:03:47.955Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DeleteRestricted.cshtml",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\DeleteRestricted.cshtml",
-              "RelativeDocumentMoniker": "Views\\Category\\DeleteRestricted.cshtml",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Views\\Category\\DeleteRestricted.cshtml",
-              "RelativeToolTip": "Views\\Category\\DeleteRestricted.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T10:03:22.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Controllers\\CategoryController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T10:01:36.937Z",
+              "WhenOpened": "2025-05-04T13:49:03.73Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "ThemeController.cs",
-              "DocumentMoniker": "F:\\Vezbe RVAS\\RvasForumApp\\Controllers\\ThemeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ThemeController.cs",
-              "ToolTip": "F:\\Vezbe RVAS\\RvasForumApp\\Controllers\\ThemeController.cs",
-              "RelativeToolTip": "Controllers\\ThemeController.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAYwHIAAAAJAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "F:\\Vezbe RVAS\\Code first\\RvasForumApp\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAADwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T19:17:03.398Z",
+              "WhenOpened": "2025-05-04T13:42:37.47Z",
               "EditorCaption": ""
             }
           ]
