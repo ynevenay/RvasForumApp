@@ -120,7 +120,8 @@
                 var red = $(this).closest('tr');
                 var id = red.data('id');
 
-                if (!confirm('Da li ste sigurni da zelite da obrisete kategoriju
+                if (!confirm('Da li ste sigurni da zelite da obrisete kategoriju')){
+                    return;
                 }
 
                 $.ajax({
